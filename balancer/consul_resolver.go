@@ -11,6 +11,7 @@ import (
 
 	"github.com/hashicorp/consul/api"
 	"github.com/shirou/gopsutil/cpu"
+	"github.com/sirupsen/logrus"
 )
 
 // ConsulResolverBuilder builder
@@ -52,6 +53,7 @@ func NewConsulResolver(
 		done:         false,
 		cpuUsage:     50,
 		zone:         zone(),
+		logger:       logrus.New(), // default logger
 	}
 
 	if err := r.Start(); err != nil {
